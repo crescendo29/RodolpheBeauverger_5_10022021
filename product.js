@@ -13,9 +13,10 @@ async function fetchApi(url) {
 }
 
 async function getProducts() {
-  const productId = await new URL(window.location.href).searchParams.get("id");
+  const productId = new URL(window.location.href).searchParams.get("id");
   const data = await fetchApi(`http://localhost:3000/api/furniture/${productId}`);
   generateProduct(data);
+  addProduct(data);
 }
 
 getProducts();
@@ -36,4 +37,28 @@ function generateProduct(data) {
   color.forEach((element, key) => {
     productOption[key] = new Option(element, key);
   });
+}
+
+function addProduct(data) {
+  const addProduct = document.getElementById("add-to-cart");
+  addProduct.addEventListener("click", (e) => {
+    e.preventDefault();
+    let productInLocalStorage = JSON.parse(localStorage.getItem("product"));
+
+    if (productInLocalStorage) {
+      productInLocalStorage.push(product);
+      localStorage.setItem("product", JSON.stringify(productInLocalStorage));
+    } else {
+      productInLocalStorage = [];
+      productInLocalStorage.push(product);
+      localStorage.setItem("product", JSON.stringify(productInLocalStorage));
+    }
+  });
+
+  let product = {
+    name: data.name,
+    id: data._id,
+    image: data.imageUrl,
+    price: data.price / 100,
+  };
 }
