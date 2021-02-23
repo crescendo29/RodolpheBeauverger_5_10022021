@@ -1,24 +1,20 @@
-async function fetchApi(url) {
-  try {
-    let response = await fetch(url);
-    if (response.ok) {
-      let data = await response.json();
-      return data;
-    } else {
-      console.error("retour du serveur : ", response.status);
-    }
-  } catch (err) {
-    console.log(err);
+const productInLocalStorage = JSON.parse(localStorage.getItem("product"));
+const inCart = document.getElementById("in-cart");
+
+function generateProductInCart() {
+  if (productInLocalStorage === null) {
+    inCart.innerHTML = `<td>Le panier est vide</td>`;
+  } else {
+    productInLocalStorage.forEach((element) => {
+      console.log(element.image);
+      console.log(element.name);
+      console.log(element.price);
+      console.log(element.quantity);
+    });
   }
 }
-async function getProducts() {
-  const data = await fetchApi("http://localhost:3000/api/furniture");
-  generateProduct(data);
-}
-
-getProducts();
-
-function generateProduct(data) {
+generateProductInCart();
+/* function generateProduct(data) {
   data.forEach((product) => {
     const inCart = document.getElementById("in-cart");
     const newLine = document.createElement("tr");
@@ -31,16 +27,17 @@ function generateProduct(data) {
     newCell.innerHTML = `<img src=${product.imageUrl}>`;
     newLine.appendChild(newCell);
 
-    /* newCell.id = "product-quantity";
-    newCell.textContent = ;
+    newCell.id = "product-quantity";
+    newCell.textContent = "nouveau texte";
     newLine.appendChild(newCell); */
 
-    /*  newCell.id = "product-price";
+/*  newCell.id = "product-price";
     newCell.textContent = data.price;
     newLine.appendChild(newCell); */
 
-    /* newCell.id = "product-total";
+/* newCell.id = "product-total";
     newCell.textContent =;
     newLine.appendChild(newCell); */
-  });
+/*  });
 }
+ */

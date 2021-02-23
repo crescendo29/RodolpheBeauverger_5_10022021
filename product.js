@@ -12,16 +12,16 @@ async function fetchApi(url) {
   }
 }
 
-async function getProducts() {
+async function getProductFeature() {
   const productId = new URL(window.location.href).searchParams.get("id");
   const data = await fetchApi(`http://localhost:3000/api/furniture/${productId}`);
-  generateProduct(data);
+  generateProductFeature(data);
   addProduct(data);
 }
 
-getProducts();
+getProductFeature();
 
-function generateProduct(data) {
+function generateProductFeature(data) {
   const productImage = document.getElementById("product-image");
   const productName = document.getElementById("product-name");
   const productPrice = document.getElementById("product-price");
@@ -60,5 +60,6 @@ function addProduct(data) {
     id: data._id,
     image: data.imageUrl,
     price: data.price / 100,
+    quantity: 1,
   };
 }
