@@ -35,9 +35,20 @@
                 <th>Quantité</th>
                 <th>Prix unitaire</th>
                 <th>Total</th>
+                <th>Supprimer</th>
               </tr>
             </thead>
             <tbody id="in-cart"></tbody>
+            <template id="product-row">
+              <tr id="product-id">
+                <td><img id="product-image" src="" alt="Photo du produit" /></td>
+                <td id="product-name"></td>
+                <td id="product-quantity"></td>
+                <td id="product-price"></td>
+                <td id="product-total-price"></td>
+                <td id="product-delete"></td>
+              </tr>
+            </template>
           </table>
         </section>
         <section id="info">
@@ -75,6 +86,7 @@
         </a>
       </footer>
     </div>
+    <script src="./api.js"></script>
     <script src="./cart.js"></script>
   </body>
 </html>
