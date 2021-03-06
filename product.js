@@ -1,5 +1,4 @@
 const productId = new URL(window.location.href).searchParams.get("id");
-
 async function getProductFeature() {
   const data = await fetchApi(`http://localhost:3000/api/furniture/${productId}`);
   generateProductFeature(data);
@@ -25,82 +24,33 @@ function generateProductFeature(data) {
     productOption[key] = new Option(element, key);
   });
 }
-/* let productInLocalStorage = JSON.parse(localStorage.getItem("inCart"));
-for (const element of productInLocalStorage) {
-  console.log(element.features.price);
-} */
 
 function addProduct(data) {
   const addProduct = document.getElementById("add-to-cart");
-  //const product = [data._id, [data.name, data._id, data.imageUrl, data.price / 100]];
   const product = { id: data._id, features: { quantity: 1, img: data.imageUrl, name: data.name, price: data.price / 100 } };
   addProduct.addEventListener("click", (e) => {
     e.preventDefault();
-    let productInLocalStorage = JSON.parse(localStorage.getItem("inCart") || "[]");
-
-    /* for (const element of productInLocalStorage) {
-      console.log(element.id);
-      if (element.id === productId) {
-        console.log("existe");
-        element.features.quantity++;
-        localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
-      } else {
-        console.log("pas dans le panier");
-        productInLocalStorage.push(product);
-        localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
+    let productInLocalStorage = JSON.parse(localStorage.getItem("inCart"));
+    if (productInLocalStorage) {
+      for (let i = 0; i < productInLocalStorage.length; i++) {
+        const element = productInLocalStorage[i];
+        console.log(element);
+        console.log(element.id);
+        if (element.id === data._id) {
+          console.log("yeah");
+          element.features.quantity++;
+          localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
+        } else {
+          productInLocalStorage.push(product);
+          localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
+          console.log("pas dedans");
+        }
       }
-    } */
-
-    if (productInLocalStorage.indexOf(productId)) {
-      console.log(productInLocalStorage);
-      productInLocalStorage.push(product);
       localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
     } else {
+      productInLocalStorage = [];
       productInLocalStorage.push(product);
       localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
     }
   });
 }
-
-/* class Cart {
-  productInCart(produit) {
-    let products = this.products;
-
-    if (products[produit._id]) {
-      console.log(`y'en a déjà`);
-    } else {
-      console.log(`y'en a pas`);
-    }
-    this.products = products;
-  }
-  get products() {
-    return JSON.parse(localStorage.getItem("inCart" || {}));
-  }
-  set products(products) {
-    localStorage.setItem("inCart", JSON.stringify(products));
-  }
-}
-const userCart = new Cart(); */
-
-//let incart = { productId1: {name: productName1, price: productPrice1, quantity: productQuantity1}, productId2:{name: productName2, price: productPrice2, quantity: productQuantity2}}
-
-/* class MyClass {
-  constructor(property) {
-    this.property = property
-  }
-
-  set property(prop) {
-  // Some validation etc.
-  this._property = prop
-  }
-
-  get property() {
-    return this._property
-  }
-
-  toJSON() {
-    return {
-      property: this.property
-    }
-  }
-} */
