@@ -24,31 +24,17 @@ function generateProductFeature(data) {
     productOption[key] = new Option(element, key);
   });
 }
-
 function addProduct(data) {
   const addProduct = document.getElementById("add-to-cart");
   const product = { id: data._id, features: { quantity: 1, img: data.imageUrl, name: data.name, price: data.price / 100 } };
   addProduct.addEventListener("click", (e) => {
     e.preventDefault();
-    let productInLocalStorage = JSON.parse(localStorage.getItem("inCart"));
-    if (productInLocalStorage) {
-      for (let i = 0; i < productInLocalStorage.length; i++) {
-        const element = productInLocalStorage[i];
-        console.log(element);
-        console.log(element.id);
-        if (element.id === data._id) {
-          console.log("yeah");
-          element.features.quantity++;
-          localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
-        } else {
-          productInLocalStorage.push(product);
-          localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
-          console.log("pas dedans");
-        }
-      }
+    const productInLocalStorage = JSON.parse(localStorage.getItem("inCart") || "[]");
+    const found = productInLocalStorage.find((element) => element.id === data._id);
+    if (found) {
+      found.features.quantity++;
       localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
     } else {
-      productInLocalStorage = [];
       productInLocalStorage.push(product);
       localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
     }
