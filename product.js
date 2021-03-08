@@ -24,6 +24,7 @@ function generateProductFeature(data) {
     productOption[key] = new Option(element, key);
   });
 }
+
 function addProduct(data) {
   const addProduct = document.getElementById("add-to-cart");
   const product = { id: data._id, features: { quantity: 1, img: data.imageUrl, name: data.name, price: data.price / 100 } };
@@ -33,10 +34,10 @@ function addProduct(data) {
     const found = productInLocalStorage.find((element) => element.id === data._id);
     if (found) {
       found.features.quantity++;
-      localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
     } else {
       productInLocalStorage.push(product);
-      localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
     }
+    localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
+    alert("Ce produit a été ajouté à votre panier.");
   });
 }
