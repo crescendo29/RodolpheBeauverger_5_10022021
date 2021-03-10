@@ -1,9 +1,13 @@
+//Récupération de la liste et des caractéristiques des article proposés à la vente
+
 async function getProducts() {
   const data = await fetchApi("http://localhost:3000/api/furniture");
   generateProduct(data);
 }
 
 getProducts();
+
+//Création des cartes correspondant à la liste d'articles
 
 function generateProduct(data) {
   data.forEach((product) => {
@@ -12,7 +16,9 @@ function generateProduct(data) {
     const productImg = document.createElement("figure");
     const productName = document.createElement("h2");
     const productPrice = document.createElement("span");
-    const productDescription = document.createElement("p");
+    const productDescription = document.createElement("figcaption");
+
+    //le click sur une carte renverra sur la page du produit avec son ID
 
     productElt.id = "product";
     productElt.href = `./product.html?id=${product._id}`;
