@@ -19,9 +19,11 @@ function generateProductFeature(data) {
   const productOption = document.getElementById("product-option");
   const color = data.varnish;
 
+  const price = formatCurrency(data.price / 100);
+
   productImage.src = data.imageUrl;
   productName.textContent = data.name;
-  productPrice.textContent = `${data.price / 100}.00 €`;
+  productPrice.textContent = price;
   productDescription.textContent = data.description;
 
   color.forEach((element, key) => {
@@ -34,6 +36,9 @@ function generateProductFeature(data) {
 function addProduct(data) {
   const addProduct = document.getElementById("add-to-cart");
   const product = { id: data._id, features: { quantity: 1, img: data.imageUrl, name: data.name, price: data.price / 100 } };
+
+  //
+
   addProduct.addEventListener("click", (e) => {
     e.preventDefault();
 

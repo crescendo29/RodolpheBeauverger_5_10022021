@@ -45,6 +45,13 @@
               </tr>
             </thead>
             <tbody id="in-cart"></tbody>
+            <tfoot>
+              <tr>
+                <th colspan="2"></th>
+                <th colspan="2">Total</th>
+                <th class="total-global"></th>
+              </tr>
+            </tfoot>
             <template id="product-row">
               <tr class="product-id">
                 <td><img class="product-image" src="" alt="Photo du produit" /></td>
@@ -80,7 +87,7 @@
               <input type="email" name="email" id="email" placeholder="Votre email" required />
             </div>
             <div class="form">
-              <input type="submit" id="validate" value="Passer Commande" />
+              <input type="button" id="validate" value="Passer Commande" />
             </div>
           </form>
         </section>

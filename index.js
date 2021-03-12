@@ -2,42 +2,27 @@
 
 async function getProducts() {
   const data = await fetchApi("http://localhost:3000/api/furniture");
-  generateProduct(data);
+  generateProducts(data);
 }
 
 getProducts();
 
 //Création des cartes correspondant à la liste d'articles
 
-function generateProduct(data) {
-  data.forEach((product) => {
-    const gallery = document.getElementById("products-list");
-    const productElt = document.createElement("a");
-    const productImg = document.createElement("figure");
-    const productName = document.createElement("h2");
-    const productPrice = document.createElement("span");
-    const productDescription = document.createElement("figcaption");
+function generateProducts(data) {
+  data.forEach((element) => {
+    const price = formatCurrency(element.price / 100);
 
-    //le click sur une carte renverra sur la page du produit avec son ID
+    //Permet de créer de nouvelles copies du template des lignes d'article
 
-    productElt.id = "product";
-    productElt.href = `./product.html?id=${product._id}`;
-    gallery.appendChild(productElt);
+    const productTemplate = document.getElementById("product-template");
+    const clone = document.importNode(productTemplate.content, true);
 
-    productImg.id = "product-image";
-    productImg.innerHTML = `<img src=${product.imageUrl}>`;
-    productElt.appendChild(productImg);
-
-    productName.id = "product-name";
-    productName.textContent = product.name;
-    productElt.appendChild(productName);
-
-    productPrice.id = "product-price";
-    productPrice.textContent = `${product.price / 100}.00 €`;
-    productElt.appendChild(productPrice);
-
-    productDescription.id = "product-description";
-    productDescription.textContent = product.description;
-    productElt.appendChild(productDescription);
+    clone.querySelector(".product-image").src = element.imageUrl;
+    clone.querySelector(".product-name").textContent = element.name;
+    clone.querySelector(".product-name").href = `./product.html?id=${element._id}`;
+    clone.querySelector(".product-price").textContent = price;
+    clone.querySelector(".product-description").textContent = element.description;
+    document.getElementById("products-list").appendChild(clone);
   });
 }
