@@ -17,17 +17,17 @@
     <title>Orinoco || Découvrez le Spécialiste des Meubles en Chêne</title>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="bg-dark">
+    <header class="container-fluid">
+      <div class="bg-orinoco-color">
         <div class="container">
           <div class="row">
-            <nav class="col navbar navbar-expand-lg navbar-dark">
-              <a class="navbar-brand" href="./index.html"><img src="./images/logo.png" alt="logo Orinoco" /></a>
+            <nav class="col navbar navbar-expand-lg navbar-light">
+              <a class="navbar-brand col-8" href="./index.html"><img src="./images/logo.png" alt="logo Orinoco" /></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div id="navbarContent" class="collapse navbar-collapse">
-                <ul class="navbar-nav bg-dark">
+              <div id="navbarContent" class="collapse navbar-collapse col-4">
+                <ul class="navbar-nav bg-orinoco-color">
                   <li class="nav-item active"><a href="./index.html" class="nav-link">Accueil</a></li>
                   <li class="nav-item"><a href="./cart.html" class="nav-link">Panier</a></li>
                 </ul>
@@ -36,13 +36,14 @@
           </div>
         </div>
       </div>
+    </header>
 
-      <div class="confirmation">
-        <h1>Votre commande est validée...Merci.</h1>
-        <p id="order-id"></p>
-        <a href="./index.html">Retour à l'Accueil</a>
-      </div>
-      <script src="./api.js"></script>
-      <script src="./confirmation.js"></script>
+    <div class="confirmation">
+      <h1 class="text-center">Votre commande est validée...Merci.</h1>
+      <p id="order-id" class="text-center"></p>
+      <a href="./index.html">Retour à l'Accueil</a>
+    </div>
+    <script src="./api.js"></script>
+    <script src="./confirmation.js"></script>
   </body>
 </html>

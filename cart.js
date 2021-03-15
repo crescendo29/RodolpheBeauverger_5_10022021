@@ -13,7 +13,7 @@ if (!productInLocalStorage || productInLocalStorage.length === 0) {
 function displayProducts() {
   let total = 0;
   productInLocalStorage.forEach((element) => {
-    //Permet de calculer le montant total de la commande
+    //Permet de calculer le montant total de la commande en récupérant le prix de l'élément et la quantité
 
     total += element.features.price * element.features.quantity;
     localStorage.setItem("total", JSON.stringify(total));
@@ -36,7 +36,7 @@ function displayProducts() {
   });
 }
 
-//Permet de modifier la quantité de produit voulu
+//Permet de modifier la quantité de produit voulu et de mettre à jour le localStorage
 
 function setQuantity() {
   productInLocalStorage.forEach((element) => {
@@ -47,7 +47,7 @@ function setQuantity() {
   });
 }
 
-//Permet de supprimer une ligne de produit
+//Permet de supprimer une ligne de produit et de mettre à jour le localStorage
 
 function deleteProduct() {
   const productsToDelete = document.querySelectorAll(".delete");
@@ -77,33 +77,39 @@ function sendOrder() {
 
   const products = productInLocalStorage.map((element) => element.id);
 
-  const order = {
-    contact: {
-      firstName: firstName,
-      lastName: lastName,
-      address: address,
-      city: city,
-      email: email,
-    },
-    products: products,
-  };
-  const send = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(order),
-  };
+  //On vérifie la validité des données du formulaire
 
-  fetch(`http://localhost:3000/api/furniture/order`, send)
-    .then((response) => response.json())
-    .then((json) => {
-      localStorage.removeItem("inCart");
-      window.location.href = `${window.location.origin}/confirmation.html?orderId=${json.orderId}`;
-    })
-    .catch(() => {
-      console.log(error);
-    });
+  if ((firstname, lastname, address, city, email != "" && /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email))) {
+    const order = {
+      contact: {
+        firstName: firstName,
+        lastName: lastName,
+        address: address,
+        city: city,
+        email: email,
+      },
+      products: products,
+    };
+    const send = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(order),
+    };
+
+    fetch(`http://localhost:3000/api/furniture/order`, send)
+      .then((response) => response.json())
+      .then((json) => {
+        localStorage.removeItem("inCart");
+        window.location.href = `${window.location.origin}/confirmation.html?orderId=${json.orderId}`;
+      })
+      .catch(() => {
+        console.log(error);
+      });
+  } else {
+    alert("Veuillez renseigner tous les champs du formulaire");
+  }
 }
 
 const clickElement = document.getElementById("validate");

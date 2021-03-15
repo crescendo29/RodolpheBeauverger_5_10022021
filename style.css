@@ -5,6 +5,15 @@
 }
 
 img {
-  height: 200px;
-  width: 200px;
+  height: 15rem;
+  width: 18rem;
+  object-fit: contain;
+}
+
+.bg-orinoco-color{
+  background-color: #F3E9F1;
+}
+
+input:invalid {
+  border: 2px dashed red;
 }

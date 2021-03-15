@@ -13,3 +13,5 @@ async function fetchApi(url) {
 }
 
 const formatCurrency = (elt) => new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(elt);
+
+//class product { id, features[img, name, price, description, quantity, options]}
