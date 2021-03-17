@@ -40,18 +40,20 @@
       </header>
 
       <main>
-        <figure id="product-id">
-          <img id="product-image" src="" alt="photo de meuble" />
-          <figcaption>
-            <h2 id="product-name"></h2>
-            <span id="product-price"></span>
-            <p id="product-description"></p>
-            <select name="varnish" id="product-option">
-              <option value="">--Sélectionnez votre teinte--</option>
-            </select>
-            <button type="button" id="add-to-cart" class="btn btn-primary">Ajouter au panier</button>
-          </figcaption>
-        </figure>
+        <div class="container-fluid row d-flex">
+          <div id="product-id" class="product-card d-flex flex-row card shadow m-1">
+            <img id="product-image" src="" alt="photo de meuble" />
+            <div class="p-3">
+              <h2 id="product-name"></h2>
+              <span id="product-price"></span>
+              <p id="product-description"></p>
+              <select name="varnish" id="product-option" class="form-select">
+                <option value="">--Sélectionnez votre teinte--</option>
+              </select>
+              <button type="button" id="add-to-cart" class="btn btn-primary m-2 col-12">Ajouter au panier</button>
+            </div>
+          </div>
+        </div>
       </main>
 
       <footer>

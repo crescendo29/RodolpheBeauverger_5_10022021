@@ -17,13 +17,12 @@
     <title>Orinoco || Découvrez le Spécialiste des Meubles en Chêne</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <header class="container-fluid">
         <div class="bg-orinoco-color">
-          <div class="container">
             <div class="row">
               <nav class="col navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand col-8" href="./index.html"><img src="./images/logo.png" alt="logo Orinoco" /></a>
+                <a class="navbar-brand" href="./index.html"><img src="./images/logo.png" alt="logo Orinoco" class="img-fluid"/></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -35,7 +34,6 @@
                 </div>
               </nav>
             </div>
-          </div>
         </div>
       </header>  
         <div class="row">
@@ -43,8 +41,8 @@
         </div>
   
         <template id="product-template">
-          <li class="product-card d-flex flex-row card col-md-5 shadow m-1">
-            <img class="product-image" src="" class="card-img-top" alt="photo de l'article" />
+          <li class="product-card d-flex card shadow m-1">
+            <img class="product-image" src="" class="card-img-top rounded object-cover" alt="photo de l'article" />
             <div class="card-body">
               <a class="product-name stretched-link text-secondary" href=""></a>
               <p class="product-price"></p>

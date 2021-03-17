@@ -4,14 +4,14 @@
   box-sizing: border-box;
 }
 
-img {
+/* img {
   height: 15rem;
   width: 18rem;
   object-fit: contain;
-}
+} */
 
-.bg-orinoco-color{
-  background-color: #F3E9F1;
+.bg-orinoco-color {
+  background-color: #f3e9f1;
 }
 
 input:invalid {
