@@ -1,13 +1,16 @@
 //Récupération des caractéristiques du produit et des options proposées
 
 const productId = new URL(window.location.href).searchParams.get("id");
-async function getProductFeature() {
-  const data = await fetchApi(`http://localhost:3000/api/furniture/${productId}`);
-  generateProductFeature(data);
-  addProduct(data);
-}
 
-getProductFeature();
+fetch(`http://localhost:3000/api/furniture/${productId}`)
+  .then((result) => result.json())
+  .then((data) => {
+    generateProductFeature(data);
+    addProduct(data);
+  })
+  .catch(() => {
+    console.log(error);
+  });
 
 //Création de la fiche produit et des options dans le HTML
 

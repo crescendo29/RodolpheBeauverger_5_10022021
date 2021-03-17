@@ -1,11 +1,17 @@
 //Récupération de la liste et des caractéristiques des article proposés à la vente
 
-async function getProducts() {
+/* async function getProducts() {
   const data = await fetchApi("http://localhost:3000/api/furniture");
   generateProducts(data);
 }
 
-getProducts();
+getProducts(); */
+fetch("http://localhost:3000/api/furniture")
+  .then((result) => result.json())
+  .then((data) => generateProducts(data))
+  .catch(() => {
+    console.log(error);
+  });
 
 //Création des cartes correspondant à la liste d'articles
 

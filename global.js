@@ -1,4 +1,4 @@
-async function fetchApi(url) {
+/* async function fetchApi(url) {
   try {
     let response = await fetch(url);
     if (response.ok) {
@@ -10,8 +10,6 @@ async function fetchApi(url) {
   } catch (err) {
     console.log(err);
   }
-}
+} */
 
 const formatCurrency = (elt) => new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(elt);
-
-//class product { id, features[img, name, price, description, quantity, options]}
