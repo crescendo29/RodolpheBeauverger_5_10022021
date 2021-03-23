@@ -59,5 +59,6 @@ function addProduct(data) {
     }
     localStorage.setItem("inCart", JSON.stringify(productInLocalStorage));
     alert("Ce produit a été ajouté à votre panier.");
+    window.location.reload();
   });
 }

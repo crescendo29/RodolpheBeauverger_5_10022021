@@ -4,11 +4,10 @@
   box-sizing: border-box;
 }
 
-/* img {
-  height: 15rem;
-  width: 18rem;
-  object-fit: contain;
-} */
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 .bg-orinoco-color {
   background-color: #f3e9f1;
@@ -16,4 +15,7 @@
 
 input:invalid {
   border: 2px dashed red;
+}
+.containerbete {
+  height: 10rem;
 }
