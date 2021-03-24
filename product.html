@@ -28,7 +28,7 @@
             <div id="navbarContent" class="collapse navbar-collapse col-md-5 bg-orinoco-color">
               <ul class="navbar-nav">
                 <li class="nav-item active bg-light rounded"><a href="./index.html" class="nav-link">Accueil</a></li>
-                <li class="nav-item bg-light rounded"><a href="./cart.html" id="cart-content" class="nav-link">Panier</a></li>
+                <li class="nav-item bg-light rounded"><a href="./cart.html" class="nav-link cart-content">Panier</a></li>
               </ul>
             </div>
           </nav>
@@ -36,8 +36,8 @@
       </header>
 
       <main>
-        <div class="container-fluid row d-flex">
-          <div id="product-id" class="product-card card shadow m-1">
+        <div class="container-fluid row d-flex justify-content-md-center">
+          <div id="product-id" class="product-card card shadow m-1 col-md-6">
             <img id="product-image" class="rounded img-fluid" src="" alt="photo de meuble" />
             <div class="p-3">
               <h2 id="product-name"></h2>
@@ -47,6 +47,7 @@
                 <option value="">--Sélectionnez votre teinte--</option>
               </select>
               <button type="button" id="add-to-cart" class="btn btn-primary m-2 col-12">Ajouter au panier</button>
+              <a href="./cart.html" class="btn btn-secondary m-2 col-12 cart-content">Panier</a>
             </div>
           </div>
         </div>

@@ -6,4 +6,4 @@ let howManyArticleInCart = 0;
 productsInLocalStorage.forEach((element) => {
   howManyArticleInCart += element.features.quantity;
 });
-document.getElementById("cart-content").textContent = `Panier(${howManyArticleInCart} articles)`;
+document.querySelector(".cart-content").textContent = `Panier(${howManyArticleInCart} articles)`;
