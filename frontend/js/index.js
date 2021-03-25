@@ -3,7 +3,7 @@
 fetch("http://localhost:3000/api/furniture")
   .then((result) => result.json())
   .then((data) => generateProducts(data))
-  .catch(() => {
+  .catch((error) => {
     console.log(error);
   });
 

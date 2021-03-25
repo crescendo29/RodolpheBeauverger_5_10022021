@@ -79,7 +79,17 @@ function sendOrder() {
 
   //On vérifie la validité des données du formulaire
 
-  if ((firstname, lastname, address, city, email != "" && /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email))) {
+  if (
+    firstName != "" &&
+    /^[a-zA-ZÀ-ÿ'\-]+$/.test(firstName) &&
+    lastName != "" &&
+    /^[a-zA-ZÀ-ÿ'\-]+$/.test(lastName) &&
+    address != "" &&
+    city != "" &&
+    /^[a-zA-ZÀ-ÿ'\-]+$/.test(city) &&
+    email != "" &&
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+  ) {
     const order = {
       contact: {
         firstName: firstName,
@@ -102,7 +112,7 @@ function sendOrder() {
       .then((response) => response.json())
       .then((json) => {
         localStorage.removeItem("inCart");
-        window.location.href = `${window.location.origin}/confirmation.html?orderId=${json.orderId}`;
+        window.location.href = `${window.location.origin}/frontend/pages/confirmation.html?orderId=${json.orderId}`;
       })
       .catch(() => {
         console.log(error);
